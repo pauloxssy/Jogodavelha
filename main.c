@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
-/* Nome: Sophia Maria Vieira Galvao(Matricula: 202454071) */
+/* Nome: Sophia Maria Vieira Galvao(Matricula: 202454071) */   
+/* Nome: Bruno Rafael Severo dos Santos Silva(Matricula: xxxxxxxxx) */
+/* Nome: Paulo André Menezes RochaMatricula: xxxxxxxxx) */
+
 
 
 //Variávei Globais
