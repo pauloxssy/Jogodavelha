@@ -6,10 +6,9 @@
 /* Nome: Bruno Rafael Severo dos Santos Silva(Matricula: xxxxxxxxx) */
 /* Nome: Paulo André Menezes RochaMatricula: xxxxxxxxx) */
 
-
+/*Foi utilizado além do codeblocks o Visual Studio Code, Git, Github e Github Desktop*/
 
 //Variávei Globais
-
 char tabuleiro[3][3];
 int placar_jogador1 = 0;
 int placar_maquina = 0;
@@ -17,7 +16,6 @@ int placar_jogador2 = 0;
 int opcao; //Vai ser a variável do menu;
 
 int Cara_Coroa(){
-    
     return rand() % 2;
 }
 
@@ -40,50 +38,37 @@ void ImprimindoTabuleiro() {
 }
 
 void Jogador1(){
-
     int i, j;
         
         do{
-            printf("Jogador 1 digite a posicao (linha de 0-2 e coluna de 0-2: ");
+            printf("Jogador 1 digite a posicao (linha de 0-2 e coluna de 0-2): ");
             scanf("%d %d", &i, &j);
             
             if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
-            
-            printf("Este espaco ja esta preenchido!\n");
+                printf("Este espaco ja esta preenchido!\n");
             }
 
-        }
-
-        while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
-
+        } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
             tabuleiro[i][j] = 'X';
             
-        
-        
-    
-
 }
 
 void Jogador2(){
-
     int i, j;
 
     do{
-        printf("Jogador 2 digite a posicao (linha de 0-2 e coluna de 0-2: ");
+        printf("Jogador 2 digite a posicao (linha de 0-2 e coluna de 0-2): ");
         scanf("%d %d", &i, &j);
         if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
-            
             printf("Este espaco ja esta preenchido!\n");
-            }
+        }
 
     } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
-
         tabuleiro[i][j] = 'O';
 
 }
 
 void Maquina(){
-
     int i, j;
 
     do{
@@ -91,31 +76,24 @@ void Maquina(){
         j = rand() % 3;
 
     } while(tabuleiro[i][j] != '_');
-
         printf("Maquina jogou: %d %d\n", i, j);
         tabuleiro[i][j] = 'O';
 
 }
 
 char Resultado(){
-
     for(int i=0; i<3; i++){
 
         if((tabuleiro[i][0] == tabuleiro[i][1]) && tabuleiro[i][1] == tabuleiro[i][2] && tabuleiro[i][0] != '_'){
             return tabuleiro[i][0];
         }
-
         if(tabuleiro[0][i] == tabuleiro[1][i] && tabuleiro[1][i] == tabuleiro[2][i] && tabuleiro[0][i] != '_'){
             return tabuleiro[0][i];
         }
-
         if(tabuleiro[0][0] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][2] && tabuleiro[0][0]!='_'){
-
             return tabuleiro[0][0];
         }
-
         if(tabuleiro[0][2] == tabuleiro[1][1] && tabuleiro[1][1] == tabuleiro[2][0] && tabuleiro[0][2]!='_'){
-
             return tabuleiro[0][2];
         }
 
@@ -125,93 +103,107 @@ char Resultado(){
 
 }
 
+void Texto_Menu(){
+printf("\t\t*******************************\n");
+printf("\t\t\tJogo da Velha\n");
+printf("\t\t*******************************\n");
+
+printf("\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+printf("\t\t1- Iniciar Jogo(Jogador 1 x Maquina)\n");
+printf("\t\t2 - Modo 2 Jogadores\n");
+printf("\t\t3 - Placar\n");
+printf("\t\t4 - Sair\n");
+printf("\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+
+}
 
 int main(){
+    char continuar = 'S';
+    char ganhador = ' ';
 
     srand(time(0));
 
-    CriandoTabuleiro();
-    ImprimindoTabuleiro();
+    while(continuar == 'S' || continuar == 's'){
+        Texto_Menu();
+        printf("Digite a sua opcao: ");
+        scanf("%d", &opcao);
+
+        if(opcao == 1){
+            CriandoTabuleiro();
+            ImprimindoTabuleiro();
+            printf("Lancando a moeda para sortear(Jogador 1 = cara e Maquina = coroa)...\n");
+            int moeda = Cara_Coroa();
+    
+            if (moeda == 0){
+                printf("Cara! O Jogador 1 comeca!\n");
+        
+                for (int t = 0; t < 9 && ganhador == ' '; t++){
+
+                    if(t % 2 == 0){
+                        Jogador1(); 
+                    } 
+                    else{ 
+                        Maquina();
+                    }
+
+                    ImprimindoTabuleiro();
+                    ganhador = Resultado();
+
+                }
+    
+            }//cara 
+            else{
+                    printf("Coroa! A Maquina comeca!\n");
+                    for (int t = 1; t < 10 && ganhador == ' '; t++){
+
+                        if(t % 2 != 0){
+                            Maquina();
+                        }
+                        else{
+                            Jogador1();
+                        }
+
+                        ImprimindoTabuleiro();
+                        ganhador = Resultado();
+        
+                    }
+
+                }//coroa
+
+            //Verificando resultado J1 X CPU
+            if(ganhador == 'X'){
+                    printf("Parabens! Voce venceu!\n");
+                    placar_jogador1 ++;
+            }
+            else if(ganhador == 'O'){
+                    printf("Maquina venceu!\n");
+                    placar_maquina ++;
+            }
+            else if(ganhador != 'X' && ganhador != 'O' && ganhador != ' '){
+                printf("Empate!\n");
+            }
+
+        }//opcao 1
+
+
+
+    }//fim do while
+
+    
+
+    
 
     //opcoes de menu:
     //1- Iniciar Jogo(Jogador 1 x Maquina);
     //2 - Modo 2 Jogadores;
-    //Placar (Jogador 1, Jogador 2 e Máquina);
-    //Sair(Iremos usar o comando exit());
+    //3 - Placar (Jogador 1, Jogador 2 e Máquina);
+    //4 - Sair(Iremos usar o comando exit());
 
  //Antes de Iniciar o Jogo(Seja na opcao 1 ou na opcao 2) devemos sortear quem vai começar;
 
-    char ganhador = ' ';
     
-    printf("Fazendo o sorteio (cara ou coroa)...\n");
-    int moeda = Cara_Coroa();
+        
     
-    if (moeda == 0){
-        
-        printf("Cara! O Jogador 1 comeca!\n");
-        
-        for (int t = 0; t < 9 && ganhador == ' '; t++){
-
-            if(t % 2 == 0){
-
-                Jogador1(); } else{ Maquina();
-
-            }
-
-            ImprimindoTabuleiro();
-            ganhador = Resultado();
-
-        }
-        
-        
-        if(ganhador == 'X'){
-            printf("Parabens! Voce venceu!\n");
-            placar_jogador1 ++;
-        }
-        if(ganhador == 'O'){
-            printf("Maquina venceu!\n");
-            placar_maquina ++;
-        }
-        else{
-            printf("Empate!\n");
-        }
-    
-    } else{
-        
-        printf("Coroa! A Maquina começa!\n");
-        for (int t = 1; t < 10 && ganhador == ' '; t++){
-
-            if(t % 2 != 0){
-                
-                Maquina();
-                
-
-            }
-
-            else{
-
-                Jogador1();
-
-            }
-
-            ImprimindoTabuleiro();
-            ganhador = Resultado();
-        
-        }
-        
-        if(ganhador == 'X'){
-            printf("Parabens! Voce venceu!\n");
-            placar_jogador1 ++;
-        }
-        if(ganhador == 'O'){
-            printf("Maquina venceu!\n");
-            placar_maquina ++;
-        }
-        else{
-            printf("Empate!\n");
-        }
-        
-    }
 
     system("pause");
     return 0;
