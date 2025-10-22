@@ -3,7 +3,7 @@
 #include <time.h>
 
 /* Nome: Sophia Maria Vieira Galvao(Matricula: 202454071) */   
-/* Nome: Bruno Rafael Severo dos Santos Silva(Matricula: xxxxxxxxx) */
+/* Nome: Bruno Rafael Severo dos Santos Silva(Matricula: 202463553) */
 /* Nome: Paulo André Menezes RochaMatricula: xxxxxxxxx) */
 
 /*Foi utilizado além do codeblocks o Visual Studio Code, Git, Github, Github Desktop e Google Docs(para salvar copias do codigo por questoes de seguranca reforcada)*/
