@@ -21,19 +21,17 @@ um jogo da velha tendo um jogador humano e a máquina como oponente.
 
 
 ## Funcionalidades míninas
-
-- [ ] Menu de opções
-    - [ ] Iniciar
-        - [ ] Apresentar o tabuleiro vazio das 9 posições do tabuleiro
-        - [ ] Sortear a vez de início, para definir de forma automática quem irá iniciar jogando (humano ou máquina)
-        - [ ] Caso seja a vez do jogador humano, o sistema deve pedir para o usuário entrar com a posição que ele deseja jogar o ‘X’. O tabuleiro deve ser atualizado com a jogada, caso seja válida, ou pedir para o jogador inserir novamente uma nova posição, caso o valor digitado anteriormente seja inválido
-        - [ ] Caso seja a vez do jogador máquina, o sistema deve gerar uma posição válida, de forma aleatória, (ou, se desejar, pode implementar uma maneira mais eficaz), onde deverá ser colocado o ‘O’. O tabuleiro deve ser atualizado com a jogada.
-        - [ ] A cada jogada, o sistema deve verificar se algum jogador conseguiu completar a sequência e se tornou vencedor ou se os espaços em branco do tabuleiro se acabaram.
-            - [ ] Caso haja um vencedor, o jogo acaba e uma mensagem deve ser apresentada com o jogador que venceu
-            - [ ] Caso não haja mais espaços e nenhum jogador venceu, o sistema deve mostrar uma mensagem que terminou a partida em empate
-            - [ ] Em ambos os casos, o sistema deve voltar para o menu inicial.
-    - [ ] Placar
-        - [ ] O sistema deve mostrar um placar com a quantidade de vitórias do jogador humano, a quantidade de vitórias do jogador máquina e a quantidade de empates.
+- [X] Menu de opções
+    - [X] Iniciar
+        - [X] Apresentar o tabuleiro vazio das 9 posições do tabuleiro
+        - [X] Sortear a vez de início, para definir de forma automática quem irá iniciar jogando (humano ou máquina)
+        - [X] Caso seja a vez do jogador humano, o sistema deve pedir para o usuário entrar com a posição que ele deseja jogar o ‘X’. O tabuleiro deve ser atualizado com a jogada, caso seja válida, ou pedir para o jogador inserir novamente uma nova posição, caso o valor digitado anteriormente seja inválido
+        - [X] Caso seja a vez do jogador máquina, o sistema deve gerar uma posição válida, de forma aleatória, (ou, se desejar, pode implementar uma maneira mais eficaz), onde deverá ser colocado o ‘O’. O tabuleiro deve ser atualizado com a jogada.
+        - [X] A cada jogada, o sistema deve verificar se algum jogador conseguiu completar a sequência e se tornou vencedor ou se os espaços em branco do tabuleiro se acabaram.
+            - [X] Caso haja um vencedor, o jogo acaba e uma mensagem deve ser apresentada com o jogador que venceu
+            - [X] Caso não haja mais espaços e nenhum jogador venceu, o sistema deve mostrar uma mensagem que terminou a partida em empate
+            - [X] Em ambos os casos, o sistema deve voltar para o menu inicial.
+    - [X] Placar
+        - [X] O sistema deve mostrar um placar com a quantidade de vitórias do jogador humano, a quantidade de vitórias do jogador máquina e a quantidade de empates.
     - [ ] Sair
         - [ ] O sistema deverá perguntar se o usuário realmente deseja sair. Caso o usuário confirme, o programa é finalizado. Caso o usuário desista, o programa volta ao menu principal.
-    - [ ] Uma funcionalidade adicional diferente das demais deverá ser adicionada a escolha da equipew
