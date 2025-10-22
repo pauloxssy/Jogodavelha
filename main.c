@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include "cores.h"
 
 /* Nome: Sophia Maria Vieira Galvao(Matricula: 202454071) */   
 /* Nome: Bruno Rafael Severo dos Santos Silva(Matricula: 202463553) */
@@ -10,7 +11,6 @@
 
 //Variávei Globais
 char tabuleiro[3][3];
-
 
 
 int Cara_Coroa(){
@@ -45,6 +45,9 @@ void Jogador1(){
             if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
                 printf("Este espaco ja esta preenchido!\n");
             }
+            if(i > 2 || j > 2){
+                printf("Nao tem essa posicao!\n");
+            }
 
         } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
             tabuleiro[i][j] = 'X';
@@ -57,9 +60,13 @@ void Jogador2(){
     do{
         printf("Jogador 2 digite a posicao (linha de 0-2 e coluna de 0-2): ");
         scanf("%d %d", &i, &j);
+
         if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
             printf("Este espaco ja esta preenchido!\n");
         }
+        if(i > 2 || j > 2){
+                printf("Nao tem essa posicao!\n");
+            }
 
     } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
         tabuleiro[i][j] = 'O';
@@ -102,16 +109,16 @@ char Resultado(){
 }
 
 void Texto_Menu(){
-printf("\t\t*******************************\n");
-printf("\t\t\tJogo da Velha\n");
-printf("\t\t*******************************\n");
+printf(GREEN"\t\t*******************************\n"RESET);
+printf(YELLOW"\t\t\tJogo da Velha\n"RESET);
+printf(GREEN"\t\t*******************************\n"RESET);
 
-printf("\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-printf("\t\t1- Iniciar Jogo(Jogador 1 x Maquina)\n");
-printf("\t\t2 - Modo 2 Jogadores\n");
-printf("\t\t3 - Placar\n");
-printf("\t\t4 - Sair\n");
-printf("\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
+printf(BLUE"\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"RESET);
+printf(MAGENTA"\t\t1- Iniciar Jogo(Jogador 1 x Maquina)\n"RESET);
+printf(MAGENTA"\t\t2 - Modo 2 Jogadores\n"RESET);
+printf(MAGENTA"\t\t3 - Placar\n"RESET);
+printf(MAGENTA"\t\t4 - Sair\n"RESET);
+printf(BLUE"\txxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"RESET);
 
 }
 
@@ -122,16 +129,16 @@ int main(){
 
     while(sair == 'N' || sair == 'n'){
         Texto_Menu();
-        printf("Digite a sua opcao: ");
+        printf(CYAN"Digite a sua opcao: "RESET);
         scanf("%d", &opcao);
 
         if(opcao == 1 ){
             CriandoTabuleiro();
             ImprimindoTabuleiro();
-            printf("Lancando a moeda para sortear(Jogador 1 = cara e Maquina = coroa)...\n");
+            printf(RED"Lancando a moeda para sortear(Jogador 1 = cara e Maquina = coroa)...\n"RESET);
     
             if (moeda == 0){
-                printf("Cara! O Jogador 1 comeca!\n");
+                printf(CYAN"Cara! O Jogador 1 comeca!\n"RESET);
         
                 for (int t = 0; t < 9 && ganhador == ' '; t++){
 
@@ -149,7 +156,7 @@ int main(){
     
             }//cara 
             else{
-                    printf("Coroa! A Maquina comeca!\n");
+                    printf(MAGENTA"Coroa! A Maquina comeca!\n"RESET);
                     for (int t = 1; t < 10 && ganhador == ' '; t++){
 
                         if(t % 2 != 0){
@@ -168,15 +175,15 @@ int main(){
 
             //Verificando resultado J1 X CPU
             if(ganhador == 'X'){
-                    printf("Parabens! Voce venceu!\n");
+                    printf(CYAN"Parabens! Voce venceu!\n"RESET);
                     placar_j1 ++;
             }
             if(ganhador == 'O'){
-                    printf("Maquina venceu!\n");
+                    printf(MAGENTA"Maquina venceu!\n"RESET);
                     placar_cpu ++;
             }
             if(ganhador != 'X' && ganhador != 'O' && ganhador != ' '){
-                printf("Empate!\n");
+                printf(WHITE"Empate!\n"RESET);
                 placar_empt_j1_cpu ++;
 
             }
@@ -186,10 +193,10 @@ int main(){
         else if(opcao == 2 ){
             CriandoTabuleiro();
             ImprimindoTabuleiro();
-            printf("Lancando a moeda para sortear(Jogador 1 = cara e Jogador 2 = coroa)...\n");
+            printf(RED"Lancando a moeda para sortear(Jogador 1 = cara e Jogador 2 = coroa)...\n"RESET);
 
             if (moeda == 0){
-                printf("Cara! O Jogador 1 comeca!\n");
+                printf(CYAN"Cara! O Jogador 1 comeca!\n"RESET);
         
                 for (int t = 0; t < 9 && ganhador == ' '; t++){
 
@@ -207,7 +214,7 @@ int main(){
     
             }//cara 
             else{
-                    printf("Coroa! Jogador 2 comeca!\n");
+                    printf(RED"Coroa! Jogador 2 comeca!\n"RESET);
                     for (int t = 1; t < 10 && ganhador == ' '; t++){
 
                         if(t % 2 != 0){
@@ -226,39 +233,44 @@ int main(){
 
             //Verificando resultado J1 X J2
             if(ganhador == 'X'){
-                    printf("Parabens! Jogador 1 venceu!\n");
+                    printf(CYAN"Parabens! Jogador 1 venceu!\n"RESET);
                     placar_j1 ++;
             }
             if(ganhador == 'O'){
-                    printf("Parabens! Jogador 2 venceu!\n");
+                    printf(RED"Parabens! Jogador 2 venceu!\n"RESET);
                     placar_j2 ++;
             }
             if(ganhador != 'X' && ganhador != 'O' && ganhador != ' '){
-                printf("Empate!\n");
+                printf(WHITE"Empate!\n"RESET);
                 placar_empt_j1_j2 ++;
             }
 
         }//opcao 2
 
         else if(opcao == 3){
-            printf("Placar:\n");
-            printf("Jogador 1: %d\n", placar_j1);
-            printf("Maquina: %d\n", placar_cpu);
-            printf("Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_cpu);
-            printf("Jogador 2: %d\n", placar_j2);
-            printf("Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_j2);
+            printf(YELLOW"Placar:\n"RESET);
+            printf(CYAN"Jogador 1: %d\n", placar_j1, RESET);
+            printf(MAGENTA"Maquina: %d\n", placar_cpu, RESET);
+            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_cpu, RESET);
+            printf(RED"Jogador 2: %d\n", placar_j2, RESET);
+            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_j2, RESET);
             
         }//opcao 3
 
         else if(opcao == 4){
-            printf("Voce quer realmente sair?:");
-            scanf("%c", &sair);
+            printf(YELLOW"Voce quer realmente sair?:"RESET);
+            scanf(" %c", &sair);
 
             if(sair == 'S' || sair == 's'){
+                printf(BLUE"Fim do programa :(\n"RESET);
                 break;
             }
 
         }//opcao 4
+
+        else{
+            printf(RED"Nao tem essa opcao. Por favor digite novamente.\n\n"RESET);
+        }
 
 
 
