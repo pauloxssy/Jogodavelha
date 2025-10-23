@@ -29,8 +29,8 @@ void CriandoTabuleiro(){
 void ImprimindoTabuleiro() {
     printf("\n");
     for(int i=0; i<3; i++){
-        printf(" %c | %c | %c \n", tabuleiro[i][0], tabuleiro[i][1], tabuleiro[i][2]);
-        if(i < 2) printf("---|---|---\n");
+        printf(WHITE" %c | %c | %c \n"RESET, tabuleiro[i][0], tabuleiro[i][1], tabuleiro[i][2]);
+        if(i < 2) printf(WHITE"---|---|---\n"RESET);
     }
     printf("\n");
 }
@@ -39,14 +39,14 @@ void Jogador1(){
     int i, j;
         
         do{
-            printf("Jogador 1 digite a posicao (linha de 0-2 e coluna de 0-2): ");
+            printf(CYAN"Jogador 1 digite a posicao (linha de 0-2 e coluna de 0-2): "RESET);
             scanf("%d %d", &i, &j);
             
             if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
-                printf("Este espaco ja esta preenchido!\n");
+                printf(RED"Este espaco ja esta preenchido!\n"RESET);
             }
-            if(i > 2 || j > 2){
-                printf("Nao tem essa posicao!\n");
+            if(i > 2 || j > 2 || i < 0 || j < 0){
+                printf(RED"Nao tem essa posicao!\n"RESET);
             }
 
         } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
@@ -58,14 +58,14 @@ void Jogador2(){
     int i, j;
 
     do{
-        printf("Jogador 2 digite a posicao (linha de 0-2 e coluna de 0-2): ");
+        printf(GREEN"Jogador 2 digite a posicao (linha de 0-2 e coluna de 0-2): "RESET);
         scanf("%d %d", &i, &j);
 
         if (tabuleiro[i][j] == 'X' || tabuleiro[i][j] == 'O'){
-            printf("Este espaco ja esta preenchido!\n");
+            printf(RED"Este espaco ja esta preenchido!\n"RESET);
         }
-        if(i > 2 || j > 2){
-                printf("Nao tem essa posicao!\n");
+        if(i > 2 || j > 2 || i < 0 || j < 0){
+                printf(RED"Nao tem essa posicao!\n"RESET);
             }
 
     } while(i < 0 || i > 2 || j < 0 || j > 2 || tabuleiro[i][j] != '_');
@@ -81,7 +81,7 @@ void Maquina(){
         j = rand() % 3;
 
     } while(tabuleiro[i][j] != '_');
-        printf("Maquina jogou: %d %d\n", i, j);
+        printf(GREEN"Maquina jogou: %d %d\n"RESET, i, j);
         tabuleiro[i][j] = 'O';
 
 }
@@ -129,13 +129,13 @@ int main(){
 
     while(sair == 'N' || sair == 'n'){
         Texto_Menu();
-        printf(CYAN"Digite a sua opcao: "RESET);
+        printf(YELLOW"Digite a sua opcao: "RESET);
         scanf("%d", &opcao);
 
         if(opcao == 1 ){
             CriandoTabuleiro();
             ImprimindoTabuleiro();
-            printf(RED"Lancando a moeda para sortear(Jogador 1 = cara e Maquina = coroa)...\n"RESET);
+            printf(YELLOW"Lancando a moeda para sortear(Jogador 1 = cara e Maquina = coroa)...\n"RESET);
     
             if (moeda == 0){
                 printf(CYAN"Cara! O Jogador 1 comeca!\n"RESET);
@@ -156,7 +156,7 @@ int main(){
     
             }//cara 
             else{
-                    printf(MAGENTA"Coroa! A Maquina comeca!\n"RESET);
+                    printf(GREEN"Coroa! A Maquina comeca!\n"RESET);
                     for (int t = 1; t < 10 && ganhador == ' '; t++){
 
                         if(t % 2 != 0){
@@ -179,7 +179,7 @@ int main(){
                     placar_j1 ++;
             }
             if(ganhador == 'O'){
-                    printf(MAGENTA"Maquina venceu!\n"RESET);
+                    printf(GREEN"Maquina venceu!\n"RESET);
                     placar_cpu ++;
             }
             if(ganhador != 'X' && ganhador != 'O' && ganhador != ' '){
@@ -193,7 +193,7 @@ int main(){
         else if(opcao == 2 ){
             CriandoTabuleiro();
             ImprimindoTabuleiro();
-            printf(RED"Lancando a moeda para sortear(Jogador 1 = cara e Jogador 2 = coroa)...\n"RESET);
+            printf(YELLOW"Lancando a moeda para sortear(Jogador 1 = cara e Jogador 2 = coroa)...\n"RESET);
 
             if (moeda == 0){
                 printf(CYAN"Cara! O Jogador 1 comeca!\n"RESET);
@@ -214,7 +214,7 @@ int main(){
     
             }//cara 
             else{
-                    printf(RED"Coroa! Jogador 2 comeca!\n"RESET);
+                    printf(GREEN"Coroa! Jogador 2 comeca!\n"RESET);
                     for (int t = 1; t < 10 && ganhador == ' '; t++){
 
                         if(t % 2 != 0){
@@ -237,7 +237,7 @@ int main(){
                     placar_j1 ++;
             }
             if(ganhador == 'O'){
-                    printf(RED"Parabens! Jogador 2 venceu!\n"RESET);
+                    printf(GREEN"Parabens! Jogador 2 venceu!\n"RESET);
                     placar_j2 ++;
             }
             if(ganhador != 'X' && ganhador != 'O' && ganhador != ' '){
@@ -249,11 +249,11 @@ int main(){
 
         else if(opcao == 3){
             printf(YELLOW"Placar:\n"RESET);
-            printf(CYAN"Jogador 1: %d\n", placar_j1, RESET);
-            printf(MAGENTA"Maquina: %d\n", placar_cpu, RESET);
-            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_cpu, RESET);
-            printf(RED"Jogador 2: %d\n", placar_j2, RESET);
-            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n", placar_empt_j1_j2, RESET);
+            printf(CYAN"Jogador 1: %d\n"RESET, placar_j1);
+            printf(MAGENTA"Maquina: %d\n"RESET, placar_cpu);
+            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n"RESET, placar_empt_j1_cpu);
+            printf(RED"Jogador 2: %d\n"RESET, placar_j2);
+            printf(WHITE"Empate (Jogador 1 X Jogador 2): %d\n"RESET, placar_empt_j1_j2);
             
         }//opcao 3
 
