@@ -97,6 +97,7 @@ void Pikachu(){
     } while(tabuleiro[i][j] != '_');
         printf(YELLOW"Pikachu atacou na posicao: %d %d\n"RESET, i, j);
         tabuleiro[i][j] = 'P';
+        
 
 }
 
