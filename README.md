@@ -33,5 +33,5 @@ um jogo da velha tendo um jogador humano e a máquina como oponente.
             - [X] Em ambos os casos, o sistema deve voltar para o menu inicial.
     - [X] Placar
         - [X] O sistema deve mostrar um placar com a quantidade de vitórias do jogador humano, a quantidade de vitórias do jogador máquina e a quantidade de empates.
-    - [ ] Sair
-        - [ ]  O sistema deverá perguntar se o usuário realmente deseja sair. Caso o usuário confirme, o programa é finalizado. Caso o usuário desista, o programa volta ao menu principal.
+    - [X] Sair
+        - [X]  O sistema deverá perguntar se o usuário realmente deseja sair. Caso o usuário confirme, o programa é finalizado. Caso o usuário desista, o programa volta ao menu principal.
