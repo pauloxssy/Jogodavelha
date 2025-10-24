@@ -6,7 +6,7 @@ Nome: Sophia Maria Vieira Galvao(Matricula: 202454071)
 
 Nome: Bruno Rafael Severo dos Santos Silva(Matricula: 202463553)
 
-Nome: Paulo André Menezes RochaMatricula: (202454160) 
+Nome: Paulo André Menezes RochaMatricula: (Matricula: 202454160) 
 
 
 ## Descrição do Jogo da Velha
